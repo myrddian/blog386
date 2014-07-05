@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    h1 Welcome to #{title}
+        div(class="navbar navbar-inverse navbar-fixed-top")
+            div(class="navbar-inner")
+                div(class="container")
+                    button(type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                    a(class="brand", href="#") #{title}
+                        div(class="nav-collapse collapse")
+                            ul(class="nav")
+                                li
+                                    a(href="/") Home
+                                li
+                                    a(href="/#{log_url}") #{log_state}
+                                li(class="active")
+                                    a(href="/newpost") #{post_state} Post
+    h1 #{post_state} Post
+    form(role="form", id='#{nonce}', method='post')
+        div(class="form-group")
+            label(for="exampleInputEmail1") Post Title
+            input(class="form-control", type='text', name='edit_post_title' , value='#{post_title}')
+        div( class="form-group"  )
+            label Body
+            textarea(type='text', name='edit_post_content', class="form-control" , rows='10'). #{post_content}
+        //div( class="form-group"  )
+        button(class='btn btn-primary', name='save_post', type='submit') Ok
+    button(class='btn btn-primary', name='cancel_post', onclick='window.history.back()') Cancel
+
+
