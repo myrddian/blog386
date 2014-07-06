@@ -22,6 +22,19 @@ in blog_data.sql. Otherwise the program will just crash and burn.
 Once that is done the login is admin with the password test,
 you might want to change it quickly, before you are raped on the internet
 
+
+Shout outs!
+===========
+
+Old retro shout out to the people involved in BOOTSTRA.386
+because with out you this would not be possible!
+And Geo for Boostrap.
+
+All the guys at Twitter!
+The fine developers of PostgreSQL
+The awesome dudes at Node.js!
+
+
 Live Version
 ============
 See it at http://blog386.herokuapp.com/
