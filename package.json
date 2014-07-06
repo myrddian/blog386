@@ -18,6 +18,15 @@
     "pg": "*",
     "q": "*",
     "nonce": "~1.0.3",
-    "helmet": "~0.1.2"
+    "helmet": "~0.1.2",
+    "express-params": "*",
+    "express-sessions": "*",
+    "express-session":"*",
+    "jquery": "*",
+    "connect-pg": "*",
+    "connect-pg-simple": "*",
+    "node-uuid": "*",
+    "validator": "*" ,
+    "express-params":"*"
   }
 }
