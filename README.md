@@ -22,4 +22,21 @@ in blog_data.sql. Otherwise the program will just crash and burn.
 Once that is done the login is admin with the password test,
 you might want to change it quickly, before you are raped on the internet
 
+Live Version
+============
+See it at http://blog386.herokuapp.com/
 
+
+Main Page
+==========
+![Alt text](blog386.png)
+
+Menus
+==========
+
+![Alt text](blog386-1.png)
+
+
+Admin
+=======
+![Alt text](blog386-2.png)

@@ -172,18 +172,18 @@ app.post('/users/:id',isLoggedIn,function(req,res){
     users.user_page_modify_user(req.params.id,req,res);
 });
 
-app.get('/page/:page_url',isLoggedIn,function(req,res){
+app.get('/page/:page_url',function(req,res){
     var page_url = req.params.page_url;
     pages.page_render(page_url,req,res);
 });
 
 
-app.get('/page/edit/:page_url',function(req,res){
+app.get('/page/edit/:page_url',isLoggedIn,function(req,res){
     var page_url = req.params.page_url;
     pages.page_edit_get(page_url,req,res);
 });
 
-app.post('/page/edit/:page_url',function(req,res){
+app.post('/page/edit/:page_url',isLoggedIn,function(req,res){
     var page_url = req.params.page_url;
     pages.page_modify_save(page_url,req,res);
 });
