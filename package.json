@@ -27,6 +27,7 @@
     "connect-pg-simple": "*",
     "node-uuid": "*",
     "validator": "*" ,
-    "passport":"*"
+    "passport":"*",
+    "passport-local":"*"
   }
 }
