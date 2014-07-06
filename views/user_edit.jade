@@ -1,0 +1,28 @@
+extends layout
+block content
+    include navbar
+    div(class="container-fluid")
+        div(class="row col-md-6 col-md-offset-3")
+            div(class="form-group")
+                h3 Edit User
+                form(role='form', method="post", class="form-signup", id='#{nonce}')
+                    table(class="table")
+                        thead
+                            th id
+                            th user name
+                            th e-mail
+                            th state
+                            th password
+                        tbody
+                            tr
+                                td #{user_id}
+                                td
+                                    input(type='text', name="editusername",class='form-control' ,placeholder='Enter Username', value='#{edit_user_name}' ,required, autofocus)
+                                td
+                                    input(type='email', name="edituseremail",class='form-control' ,placeholder='Enter Email',value='#{edit_user_email}' ,required)
+                                td
+                                    input(type='number', name='edituserstate',class='form-control',placeholder='User State',value='#{edit_user_state}',required)
+                                td
+                                    input(type='password', name='edituserpassword',class='form-control',placeholder='Password',required)
+
+                    button(class="btn btn-primary btn-block", type='submit') Save User

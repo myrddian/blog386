@@ -1,28 +1,15 @@
 extends layout
 
 block content
-  h1 Welcome to #{title}
-      div(class="navbar navbar-inverse navbar-fixed-top")
-          div(class="navbar-inner")
-              div(class="container")
-                  button(type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse")
-                    span(class="icon-bar")
-                    span(class="icon-bar")
-                    span(class="icon-bar")
-                  a(class="brand", href="#") #{title}
-                      div(class="nav-collapse collapse")
-                          ul(class="nav")
-                              li(class="active")
-                                    a(href="/") Home
-                              li
-                                a(href="/#{log_url}") #{log_state}
-                              li
-                                a(href="/newpost") New Post
-
-   ul
-       each blog, i in bloglist
-           li
-               a(href='/edit_post/'+ blog.post_id)= blog.post_title
-               blockquote
-                  p. #{blog.post_content}
-                  small #{blog.user_post}
+    include navbar
+    div(class="container-fluid")
+       div(class="jumbotron")
+           h1(class='col-md-offset-2') #{welcome_text}
+       div(class='col-md-8 col-md-offset-2')
+          each blog, i in bloglist
+              div(class="form-group")
+                  h3
+                    a(href='/edit_post/'+ blog.post_id)= blog.post_title
+                  blockquote
+                     p(class="lead"). #{blog.post_content}
+                     small #{blog.user_post}

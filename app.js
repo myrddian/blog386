@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var connect = require('connect');
 var crypto = require('crypto');
-
+var params = require('express-params')
 
 
 var routes = require('./routes/index');
@@ -27,9 +27,12 @@ var session = require('express-session');
 var login = require('./routes/login');
 
 var passport = require('passport');
+var admin = require('./routes/admin');
+var users = require('./routes/users');
+var pages = require('./routes/page');
 
 var app = express();
-
+params.extend(app);
 
 
 
@@ -87,9 +90,15 @@ passport.use(new LocalStrategy(
                 var pwd_hash = crypto.createHash('sha256').update(password +config.security_key+query.usersalt).digest('hex');
                 //console.log(pwd_hash);
                 if (pwd_hash === query.userpasswd) {
+                    //If the user state is zero the user is locked out
+                    if(query.user_state==0){
+                        return done(null, false, { message: 'Unknown user ' + username });
+                    }
                     done(null, query);
+                }else {
+                    return done(null, false, { message: 'Invalid password' });
                 }
-                return done(null, false, { message: 'Invalid password' });
+
             });
         });
     }
@@ -126,7 +135,6 @@ function isLoggedIn(req, res, next) {
 
 
 app.use('/', routes);
-app.use('/users', users);
 
 app.get('/edit_post/:id', isLoggedIn,function(req, res) {
     edit_post.edit_post(req.params.id,req,res);
@@ -147,6 +155,37 @@ app.post('/login',passport.authenticate('local', { successRedirect: '/',
 app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
+});
+
+
+app.get('/admin', isLoggedIn, admin.admin_page_render);
+app.post('/admin', isLoggedIn,admin.admin_page_post);
+
+
+app.get('/users',isLoggedIn,users.user_page_render);
+app.post('/users',isLoggedIn,users.user_page_add_user);
+app.get('/users/:id',isLoggedIn,function(req,res){
+    users.get_user_page(req.params.id,req,res);
+});
+
+app.post('/users/:id',isLoggedIn,function(req,res){
+    users.user_page_modify_user(req.params.id,req,res);
+});
+
+app.get('/page/:page_url',isLoggedIn,function(req,res){
+    var page_url = req.params.page_url;
+    pages.page_render(page_url,req,res);
+});
+
+
+app.get('/page/edit/:page_url',function(req,res){
+    var page_url = req.params.page_url;
+    pages.page_edit_get(page_url,req,res);
+});
+
+app.post('/page/edit/:page_url',function(req,res){
+    var page_url = req.params.page_url;
+    pages.page_modify_save(page_url,req,res);
 });
 
 //leave the default handlers for the moment

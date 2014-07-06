@@ -1,0 +1,10 @@
+extends layout
+block content
+    include navbar
+    div(class="container-fluid")
+        div(class="jumbotron")
+            h3 #{page_title}
+            br
+            blockquote
+                p(class="lead"). #{post_content}
+                small #{post_user}

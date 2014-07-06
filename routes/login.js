@@ -11,6 +11,7 @@ module.exports.login_form_get=function(req,res){
     logic_layer.get_blog_config(function(blog_config){
 
         res.render('login', { title: blog_config.blog_name ,
+            theme: blog_config.blog_theme,
                 nonce: nonce_gen()});
     });
 

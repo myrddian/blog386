@@ -1,0 +1,31 @@
+extends layout
+block content
+    include navbar
+    div(class="container-fluid")
+        div(class="row col-md-6 col-md-offset-3")
+            div(class="jumbotron")
+                h2 Users
+            div(class="form-group")
+                h3 Current Users
+                table(class="table")
+                    thead
+                        th id
+                        th user name
+                        th e-mail
+                    tbody
+                        each user, i in userlist
+                            tr
+                                td
+                                    a(href='/users/'+ user.user_id) #{user.user_id}
+                                td
+                                    a(href='/users/'+ user.user_id) #{user.user_name}
+                                td
+                                    a(href='/users/'+ user.user_id) #{user.user_email}
+            div(class="form-group")
+                h3 Add User
+                form(role='form', action="/users",method="post", class="form-signup", id='#{nonce}')
+                    input(type='text', name="newusername",class='form-control' ,placeholder='Enter Username', required, autofocus)
+                    input(type='email', name="newuseremail",class='form-control' ,placeholder='Enter Email', required)
+                    input(type='password', name='newuserpassword',class='form-control'  ,placeholder='Password', required)
+                    button(class="btn btn-primary btn-block", type='submit') Add User
+

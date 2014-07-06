@@ -1,0 +1,22 @@
+div(class="container")
+    div(class="navbar navbar-default", role="navigation")
+        div(class="navbar")
+            ul(class="nav navbar-nav")
+                li
+                    a(href="/") #{title}
+                li
+                    a(href='/page/about') About
+                li(style="#{logged_out_visible}")
+                    a(href="/login") Login
+                li(class="dropdown", style="#{logged_in_visible}")
+                    a(class="dropdown-toggle", data-toggle="dropdown") Logged In
+                        span(class="caret")
+                    ul(class="dropdown-menu", role="menu")
+                        li
+                            a(href="/newpost") New Post
+                        li
+                            a(href="/users") Users
+                        li
+                            a(href="/admin") Admin
+                        li
+                            a(href="/logout") Logout

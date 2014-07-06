@@ -14,18 +14,20 @@ module.exports.edit_post=function(id,req,res){
 
     logic_layer.get_blog_config(function(blog_config){
         logic_layer.get_post(id,function(post){
-            var loglogin = "Login";
-            var log_url = "login";
+            //Get the config information
+            var logged_out_visible = "";
+            var logged_in_visible = "display:none;";
             if (req.isAuthenticated()) {
-                loglogin = "Logout";
-                log_url = "logout";
+                logged_out_visible = "display:none;";
+                logged_in_visible = "";
             }
             res.render('edit-post', { nonce: nonce_gen(),
+                theme: blog_config.blog_theme,
                 post_title: post.post_title,
                 post_state: 'Edit',
                 title: blog_config.blog_name ,
-                log_state: loglogin,
-                log_url:  log_url,
+                logged_out_visible: logged_out_visible,
+                logged_in_visible:  logged_in_visible,
                 post_content: post.post_content});
         });
     });
