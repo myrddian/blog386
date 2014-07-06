@@ -27,6 +27,6 @@
     "connect-pg-simple": "*",
     "node-uuid": "*",
     "validator": "*" ,
-    "express-params":"*"
+    "passport":"*"
   }
 }
