@@ -4,7 +4,7 @@
  */
 
 var Q = require('q');
-var orm = require('../orm/orm');
+var orm = require('../ORM/orm');
 var validator = require('validator');
 var crypto = require('crypto');
 var uuid = require('node-uuid');
