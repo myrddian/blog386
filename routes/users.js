@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var logic_layer = require('../logic/blog_logic');
 var nonce_gen = require('nonce')();
-var orm = require('../orm/orm');
+var orm = require('../ORM/orm');
 
 module.exports.user_page_render = function (req, res) {
 
