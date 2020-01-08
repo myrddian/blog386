@@ -20,7 +20,7 @@ schema.sql script - once that is done be sure to load the data
 in blog_data.sql. Otherwise the program will just crash and burn.
 
 Once that is done the login is admin with the password test,
-you might want to change it quickly, before you are raped on the internet
+you might want to change it quickly, before you are exploited on the internet
 
 
 Shout outs!
